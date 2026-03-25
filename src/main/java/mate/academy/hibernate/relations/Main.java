@@ -50,9 +50,9 @@ public class Main {
         Transaction transaction = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-
-            session.createMutationQuery("DELETE FROM Actor").executeUpdate();
+            session.createNativeMutationQuery("DELETE from movies_actors").executeUpdate();
             session.createMutationQuery("DELETE FROM Movie").executeUpdate();
+            session.createMutationQuery("DELETE FROM Actor").executeUpdate();
             session.createMutationQuery("DELETE FROM Country").executeUpdate();
 
             transaction.commit();
